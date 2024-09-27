@@ -17,11 +17,13 @@ movie_manager.py: Python script for managing the database (creating tables and i
 analysis.py: (if created) Python script for data exploration and analysis.
 
 ## Getting Started
-
+`````
 Prerequisites
 Python 3.x
 SQLite
 Pandas library
+`````
+
 
 Installation
 Clone the repository:
