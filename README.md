@@ -10,13 +10,13 @@ This project uses Python and SQL to analyze a movie database consisting of movie
 - Matplotlib/Seaborn (if applicable)
 
 ## Project Structure
-`````
+
 - movie_data/: Contains CSV files for movies, actors, directors, and genres.
 _ sql_movie/: Contains SQL scripts for creating tables.
-_project.db: SQLite database file.
+- project.db: SQLite database file.
 - movie_manager.py: Python script for managing the database (creating tables and inserting data).
 - analysis.py: (if created) Python script for data exploration and analysis.
-`````
+
 
 ## Getting Started
 `````
