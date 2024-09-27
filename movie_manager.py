@@ -1,12 +1,9 @@
-# Import from Python Standard Library first
 import sqlite3
 import pathlib
-
-# Import from external packages
 import pandas as pd
 
 # Define paths using joinpath
-db_file_path = pathlib.Path("project.db")
+db_file_path = pathlib.Path("project_movie.dp")  # Updated database name
 sql_file_path = pathlib.Path("sql_movie").joinpath("create_tables.sql")
 actor_data_path = pathlib.Path("movie_data").joinpath("actors.csv")
 movie_data_path = pathlib.Path("movie_data").joinpath("movies.csv")
