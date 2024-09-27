@@ -1,6 +1,3 @@
-# datafun-05-sql
-# Project Setup
-
 # Movie Database Project
 
 ## Overview
