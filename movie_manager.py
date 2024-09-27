@@ -3,12 +3,16 @@ import pathlib
 import pandas as pd
 
 # Define paths using joinpath
-db_file_path = pathlib.Path("project_movie.dp")  # Updated database name
+db_file_path = pathlib.Path("project_movie.db")  # Update to your new database name
 sql_file_path = pathlib.Path("sql_movie").joinpath("create_tables.sql")
-actor_data_path = pathlib.Path("movie_data").joinpath("actors.csv")
-movie_data_path = pathlib.Path("movie_data").joinpath("movies.csv")
-director_data_path = pathlib.Path("movie_data").joinpath("directors.csv")
-genre_data_path = pathlib.Path("movie_data").joinpath("genres.csv")
+insert_records_file_path = pathlib.Path("sql_movie").joinpath("insert_records.sql")  # Optional, if you decide to create this
+update_records_file_path = pathlib.Path("sql_movie").joinpath("update_records.sql")
+delete_records_file_path = pathlib.Path("sql_movie").joinpath("delete_records.sql")
+query_aggregation_file_path = pathlib.Path("sql_movie").joinpath("query_aggregation.sql")
+query_filter_file_path = pathlib.Path("sql_movie").joinpath("query_filter.sql")
+query_sorting_file_path = pathlib.Path("sql_movie").joinpath("query_sorting.sql")
+query_group_by_file_path = pathlib.Path("sql_movie").joinpath("query_group_by.sql")
+query_join_file_path = pathlib.Path("sql_movie").joinpath("query_join.sql")
 
 def verify_and_create_folders(paths):
     """Verify and create folders if they don't exist."""
@@ -63,13 +67,50 @@ def insert_data_from_csv(db_path, actor_data_path, movie_data_path, director_dat
     except (sqlite3.Error, pd.errors.EmptyDataError, FileNotFoundError) as e:
         print(f"Error inserting data: {e}")
 
+def execute_sql_file(db_path, sql_file_path):
+    """Execute SQL statements from a file."""
+    try:
+        with sqlite3.connect(db_path) as conn:
+            with open(sql_file_path, "r") as file:
+                sql_script = file.read()
+            conn.executescript(sql_script)
+            print(f"Executed SQL file: {sql_file_path.name}")
+    except sqlite3.Error as e:
+        print(f"Error executing SQL file {sql_file_path.name}: {e}")
+
 def main():
-    paths_to_verify = [sql_file_path, actor_data_path, movie_data_path, director_data_path, genre_data_path]
+    paths_to_verify = [
+        sql_file_path, 
+        update_records_file_path,
+        delete_records_file_path,
+        query_aggregation_file_path,
+        query_filter_file_path,
+        query_sorting_file_path,
+        query_group_by_file_path,
+        query_join_file_path,
+        pathlib.Path("movie_data").joinpath("actors.csv"),
+        pathlib.Path("movie_data").joinpath("movies.csv"),
+        pathlib.Path("movie_data").joinpath("directors.csv"),
+        pathlib.Path("movie_data").joinpath("genres.csv"),
+    ]
     verify_and_create_folders(paths_to_verify)   
 
     create_database(db_file_path)
     create_tables(db_file_path, sql_file_path)
-    insert_data_from_csv(db_file_path, actor_data_path, movie_data_path, director_data_path, genre_data_path)
+    insert_data_from_csv(db_path=db_file_path,
+                          actor_data_path=pathlib.Path("movie_data").joinpath("actors.csv"),
+                          movie_data_path=pathlib.Path("movie_data").joinpath("movies.csv"),
+                          director_data_path=pathlib.Path("movie_data").joinpath("directors.csv"),
+                          genre_data_path=pathlib.Path("movie_data").joinpath("genres.csv"))
+
+    # Execute additional SQL files
+    execute_sql_file(db_file_path, update_records_file_path)
+    execute_sql_file(db_file_path, delete_records_file_path)
+    execute_sql_file(db_file_path, query_aggregation_file_path)
+    execute_sql_file(db_file_path, query_filter_file_path)
+    execute_sql_file(db_file_path, query_sorting_file_path)
+    execute_sql_file(db_file_path, query_group_by_file_path)
+    execute_sql_file(db_file_path, query_join_file_path)
 
 if __name__ == "__main__":
     main()
