@@ -37,13 +37,16 @@ This project uses Python and SQL to analyze a movie database consisting of movie
    ```bash
    git clone https://github.com/mokeyzz1/datafun-05-sql
    cd datafun-05-sql
+   ```
 2. Create a virtual environment and activate it:
     ```bash
 python -m venv .venv
 source .venv/bin/activate  # On Windows use `.venv\Scripts\activate`
+```
 3. Install the required packages:
     ```bash
 pip install -r requirements.txt
+```
 4. Run the movie_manager.py script to set up the database:
     ```bash
 python movie_manager.py
