@@ -1,6 +1,15 @@
 import sqlite3
 import pathlib
 import pandas as pd
+import logging
+
+# Configure logging to write to log.txt
+logging.basicConfig(
+    filename='log.txt',           
+    level=logging.DEBUG,          
+    filemode='a',                 
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
 
 # Define paths using joinpath
 db_file_path = pathlib.Path("project_movie.db")  # Update to your new database name
@@ -19,19 +28,19 @@ def verify_and_create_folders(paths):
     for path in paths:
         folder = path.parent
         if not folder.exists():
-            print(f"Creating folder: {folder}")
+            logging.info(f"Creating folder: {folder}")
             folder.mkdir(parents=True, exist_ok=True)
         else:
-            print(f"Folder already exists: {folder}")
+            logging.info(f"Folder already exists: {folder}")
 
 def create_database(db_path):
     """Create a new SQLite database file if it doesn't exist."""
     try:
         conn = sqlite3.connect(db_path)
         conn.close()
-        print("Database created successfully.")
+        logging.info("Database created successfully.")
     except sqlite3.Error as e:
-        print(f"Error creating the database: {e}")
+        logging.exception(f"Error creating the database: {e}")
 
 def create_tables(db_path, sql_file_path):
     """Read and execute SQL statements to create tables."""
@@ -40,17 +49,17 @@ def create_tables(db_path, sql_file_path):
             with open(sql_file_path, "r") as file:
                 sql_script = file.read()
             conn.executescript(sql_script)
-            print("Tables created successfully.")
+            logging.info("Tables created successfully.")
     except sqlite3.Error as e:
-        print(f"Error creating tables: {e}")
+        logging.exception(f"Error creating tables: {e}")
 
 def insert_data_from_csv(db_path, actor_data_path, movie_data_path, director_data_path, genre_data_path):
     """Read data from CSV files and insert the records into their respective tables."""
     try:
-        print(f"Actor data path: {actor_data_path}")
-        print(f"Movie data path: {movie_data_path}")
-        print(f"Director data path: {director_data_path}")
-        print(f"Genre data path: {genre_data_path}")
+        logging.debug(f"Actor data path: {actor_data_path}")
+        logging.debug(f"Movie data path: {movie_data_path}")
+        logging.debug(f"Director data path: {director_data_path}")
+        logging.debug(f"Genre data path: {genre_data_path}")
 
         actors_df = pd.read_csv(actor_data_path)
         movies_df = pd.read_csv(movie_data_path)
@@ -63,9 +72,9 @@ def insert_data_from_csv(db_path, actor_data_path, movie_data_path, director_dat
             directors_df.to_sql("directors", conn, if_exists="replace", index=False)
             genres_df.to_sql("genres", conn, if_exists="replace", index=False)
             
-            print("Data inserted successfully.")
+            logging.info("Data inserted successfully.")
     except (sqlite3.Error, pd.errors.EmptyDataError, FileNotFoundError) as e:
-        print(f"Error inserting data: {e}")
+        logging.exception(f"Error inserting data: {e}")
 
 def execute_sql_file(db_path, sql_file_path):
     """Execute SQL statements from a file."""
@@ -74,11 +83,13 @@ def execute_sql_file(db_path, sql_file_path):
             with open(sql_file_path, "r") as file:
                 sql_script = file.read()
             conn.executescript(sql_script)
-            print(f"Executed SQL file: {sql_file_path.name}")
+            logging.info(f"Executed SQL file: {sql_file_path.name}")
     except sqlite3.Error as e:
-        print(f"Error executing SQL file {sql_file_path.name}: {e}")
+        logging.exception(f"Error executing SQL file {sql_file_path.name}: {e}")
 
 def main():
+    logging.info("Program started.")
+    
     paths_to_verify = [
         sql_file_path, 
         update_records_file_path,
@@ -93,6 +104,7 @@ def main():
         pathlib.Path("movie_data").joinpath("directors.csv"),
         pathlib.Path("movie_data").joinpath("genres.csv"),
     ]
+    
     verify_and_create_folders(paths_to_verify)   
 
     create_database(db_file_path)
@@ -111,6 +123,8 @@ def main():
     execute_sql_file(db_file_path, query_sorting_file_path)
     execute_sql_file(db_file_path, query_group_by_file_path)
     execute_sql_file(db_file_path, query_join_file_path)
+
+    logging.info("Program ended.")
 
 if __name__ == "__main__":
     main()

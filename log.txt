@@ -1,0 +1,56 @@
+2024-09-27 23:44:49,867 - INFO - Program started.
+2024-09-27 23:44:49,867 - INFO - Folder already exists: sql_movie
+2024-09-27 23:44:49,867 - INFO - Folder already exists: sql_movie
+2024-09-27 23:44:49,867 - INFO - Folder already exists: sql_movie
+2024-09-27 23:44:49,868 - INFO - Folder already exists: sql_movie
+2024-09-27 23:44:49,868 - INFO - Folder already exists: sql_movie
+2024-09-27 23:44:49,868 - INFO - Folder already exists: sql_movie
+2024-09-27 23:44:49,868 - INFO - Folder already exists: sql_movie
+2024-09-27 23:44:49,868 - INFO - Folder already exists: sql_movie
+2024-09-27 23:44:49,868 - INFO - Folder already exists: movie_data
+2024-09-27 23:44:49,868 - INFO - Folder already exists: movie_data
+2024-09-27 23:44:49,868 - INFO - Folder already exists: movie_data
+2024-09-27 23:44:49,868 - INFO - Folder already exists: movie_data
+2024-09-27 23:44:49,871 - INFO - Database created successfully.
+2024-09-27 23:44:49,877 - INFO - Tables created successfully.
+2024-09-27 23:44:49,877 - DEBUG - Actor data path: movie_data/actors.csv
+2024-09-27 23:44:49,877 - DEBUG - Movie data path: movie_data/movies.csv
+2024-09-27 23:44:49,877 - DEBUG - Director data path: movie_data/directors.csv
+2024-09-27 23:44:49,877 - DEBUG - Genre data path: movie_data/genres.csv
+2024-09-27 23:44:49,901 - INFO - Data inserted successfully.
+2024-09-27 23:44:49,902 - INFO - Executed SQL file: update_records.sql
+2024-09-27 23:44:49,903 - INFO - Executed SQL file: delete_records.sql
+2024-09-27 23:44:49,903 - INFO - Executed SQL file: query_aggregation.sql
+2024-09-27 23:44:49,903 - INFO - Executed SQL file: query_filter.sql
+2024-09-27 23:44:49,904 - INFO - Executed SQL file: query_sorting.sql
+2024-09-27 23:44:49,905 - INFO - Executed SQL file: query_group_by.sql
+2024-09-27 23:44:49,905 - INFO - Executed SQL file: query_join.sql
+2024-09-27 23:44:49,905 - INFO - Program ended.
+2024-09-27 23:44:51,210 - INFO - Program started.
+2024-09-27 23:44:51,210 - INFO - Folder already exists: sql_movie
+2024-09-27 23:44:51,210 - INFO - Folder already exists: sql_movie
+2024-09-27 23:44:51,210 - INFO - Folder already exists: sql_movie
+2024-09-27 23:44:51,210 - INFO - Folder already exists: sql_movie
+2024-09-27 23:44:51,210 - INFO - Folder already exists: sql_movie
+2024-09-27 23:44:51,210 - INFO - Folder already exists: sql_movie
+2024-09-27 23:44:51,210 - INFO - Folder already exists: sql_movie
+2024-09-27 23:44:51,210 - INFO - Folder already exists: sql_movie
+2024-09-27 23:44:51,210 - INFO - Folder already exists: movie_data
+2024-09-27 23:44:51,210 - INFO - Folder already exists: movie_data
+2024-09-27 23:44:51,210 - INFO - Folder already exists: movie_data
+2024-09-27 23:44:51,210 - INFO - Folder already exists: movie_data
+2024-09-27 23:44:51,210 - INFO - Database created successfully.
+2024-09-27 23:44:51,213 - INFO - Tables created successfully.
+2024-09-27 23:44:51,213 - DEBUG - Actor data path: movie_data/actors.csv
+2024-09-27 23:44:51,213 - DEBUG - Movie data path: movie_data/movies.csv
+2024-09-27 23:44:51,213 - DEBUG - Director data path: movie_data/directors.csv
+2024-09-27 23:44:51,213 - DEBUG - Genre data path: movie_data/genres.csv
+2024-09-27 23:44:51,221 - INFO - Data inserted successfully.
+2024-09-27 23:44:51,221 - INFO - Executed SQL file: update_records.sql
+2024-09-27 23:44:51,222 - INFO - Executed SQL file: delete_records.sql
+2024-09-27 23:44:51,222 - INFO - Executed SQL file: query_aggregation.sql
+2024-09-27 23:44:51,222 - INFO - Executed SQL file: query_filter.sql
+2024-09-27 23:44:51,222 - INFO - Executed SQL file: query_sorting.sql
+2024-09-27 23:44:51,222 - INFO - Executed SQL file: query_group_by.sql
+2024-09-27 23:44:51,223 - INFO - Executed SQL file: query_join.sql
+2024-09-27 23:44:51,223 - INFO - Program ended.
